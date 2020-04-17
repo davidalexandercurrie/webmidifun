@@ -1,6 +1,7 @@
 // var output;
 var playnote = false;
 var mouseYCapped;
+var mouseXCapped;
 var mouseYOld;
 var i = 0;
 var currentFill;
@@ -16,9 +17,9 @@ function setup() {
   createCanvas(300, 600);
   WebMidi.enable(function (err) {
     output = WebMidi.outputs[0];
-    input.addListener("all", "all", function (e) {
-      console.log("Received message (" + e.note.name + e.note.octave + ").");
-    });
+    // input.addListener("all", "all", function (e) {
+    //   console.log("Received message (" + e.note.name + e.note.octave + ").");
+    // });
   });
   for (let i = 0; i < 13; i++) {
     colours.push(color(random(255), random(255), random(255)));
@@ -52,6 +53,16 @@ function draw() {
     } else {
       mouseYCapped = mouseY;
     }
+    if (mouseX > 300) {
+      mouseXCapped = 300;
+    } else if (mouseX < 0) {
+      mouseXCapped = 0;
+    } else {
+      mouseXCapped = mouseX;
+    }
+
+    let velocity = mouseXCapped / 300;
+
     mouseYCapped = 600 - mouseYCapped;
     mouseYCapped = Math.floor((mouseYCapped / 600) * 12 + 36);
     console.log(mouseYCapped - 36);
@@ -59,7 +70,7 @@ function draw() {
     currentFill = colours[mouseYCapped - 36];
     output.playNote(mouseYCapped, 1, {
       duration: 500,
-      velocity: 0.25,
+      velocity: velocity,
     });
     playnote = false;
   }
