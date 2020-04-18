@@ -1,7 +1,11 @@
+@import url(https://fonts.googleapis.com/css?family=Cambo:regular);
 html,
 body {
   height: 100%;
-  background-color: #000;
+  // background-color: #000;
+  font-family: "Cambo";
+  font-size: 1em;
+  text-align: center;
 }
 
 body {
@@ -13,8 +17,26 @@ body {
 
   /* This centers our sketch vertically. */
   align-items: center;
+  div {
+    border-radius: 1em;
+  }
 }
 
-p {
+#select-midi {
   border: 2px solid black;
+  padding: 1em;
+  display: grid;
+}
+#octave {
+  padding: 1em;
+  border: 2px solid black;
+  text-align: center;
+  display: grid;
+}
+button {
+  font-family: "Cambo";
+  font-size: 1em;
+  border: 2px solid black;
+  padding: 1em;
+  outline: none;
 }
