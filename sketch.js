@@ -77,7 +77,7 @@ function setup() {
 
 function draw() {
   // put drawing code here
-
+  strokeWeight(2);
   background("#39ff14");
   for (let j = 0; j < 13; j++) {
     if (i % 8 === 0) {
@@ -101,8 +101,8 @@ function draw() {
   if (playnote) {
     if (mouseY > 600) {
       mouseYCapped = 600;
-    } else if (mouseY < 0) {
-      mouseYCapped = 0;
+    } else if (mouseY < 1) {
+      mouseYCapped = 1;
     } else {
       mouseYCapped = mouseY;
     }
