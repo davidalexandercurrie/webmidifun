@@ -36,6 +36,7 @@ function setup() {
         output = output = WebMidi.getOutputByName(e.name);
         document.getElementById("selected-midi").innerText = output.name;
         console.log(output.name + " is now selected!");
+        alert(output.name + " is now selected!");
       });
     });
   });
@@ -91,7 +92,7 @@ function draw() {
   rect(0, 600 - (600 / 12) * (mouseYCapped - 35), 600, 600 / 12);
   rectMode(CENTER);
   fill(currentFill);
-  rect(
+  ellipse(
     mouseX,
     mouseY,
     ((600 / 12) * mouseX) / 300 + 20,
